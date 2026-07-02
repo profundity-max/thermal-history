@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>散热行业发展史 | 热管理革命</title>
+    <meta
+      name="description"
+      content="从自然对流到 AI 算力时代的热管理革命，系统梳理散热行业的发展阶段、技术路线和未来趋势。"
+    />
+    <script>
+      (() => {
+        let savedTheme = null;
+        try {
+          savedTheme = localStorage.getItem("thermal-theme");
+        } catch (error) {
+          savedTheme = null;
+        }
+        const preferredTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.dataset.theme = savedTheme || preferredTheme;
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="thermal-field" aria-hidden="true"></canvas>
+    <div class="page-shell">
+      <header class="site-header" aria-label="页面导航">
+        <a class="brand" href="#top" aria-label="返回顶部">
+          <span class="brand-mark"></span>
+          <span>Thermal History</span>
+        </a>
+        <nav class="nav-links" aria-label="章节导航">
+          <a href="#timeline">时间线</a>
+          <a href="#compare">技术对比</a>
+          <a href="#drivers">行业驱动</a>
+          <a href="#future">未来趋势</a>
+          <a href="#frontier">前沿展望</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切换到浅色主题" aria-pressed="false">
+          <span class="toggle-icon" aria-hidden="true"></span>
+          <span class="toggle-text">浅色</span>
+        </button>
+      </header>
+
+      <main id="top">
+        <section class="hero section" aria-labelledby="hero-title">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Energy Density · Heat Flow · AI Era</p>
+            <h1 id="hero-title">散热行业发展史</h1>
+            <p class="hero-subtitle">从自然对流到 AI 算力时代的热管理革命</p>
+            <p class="hero-intro">
+              散热技术的发展，本质上是人类持续驯服能量密度的过程。从机械设备、电力电子，到智能手机、服务器和
+              AI 芯片，每一次算力和功率密度的跃迁，都会推动散热技术进入新的阶段。
+            </p>
+            <div class="hero-actions" aria-label="快速跳转">
+              <a class="primary-link" href="#timeline">沿时间线探索</a>
+              <a class="secondary-link" href="#compare">查看技术路线</a>
+            </div>
+            <div class="hero-metrics" aria-label="散热技术演进概览">
+              <div>
+                <span>Thermal Path</span>
+                <strong>自然对流 → 两相冷却</strong>
+              </div>
+              <div>
+                <span>System Scale</span>
+                <strong>器件级 → 数据中心级</strong>
+              </div>
+              <div>
+                <span>Design Method</span>
+                <strong>经验设计 → 数据驱动</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal" aria-label="抽象芯片与热流路径示意">
+            <div class="chip-stage">
+              <div class="heat-orbit orbit-one"></div>
+              <div class="heat-orbit orbit-two"></div>
+              <div class="chip-core">
+                <div class="core-grid"></div>
+                <span class="core-label">AI DIE</span>
+                <span class="core-temp">900W+</span>
+              </div>
+              <div class="trace trace-a"></div>
+              <div class="trace trace-b"></div>
+              <div class="trace trace-c"></div>
+              <div class="trace trace-d"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section thesis" aria-labelledby="thesis-title">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Core Logic</p>
+            <h2 id="thesis-title">散热演进的底层逻辑</h2>
+            <p>
+              行业并不是线性地替换材料，而是在功率、空间、可靠性和系统成本之间不断重新分配工程边界。
+            </p>
+          </div>
+          <div class="insight-grid">
+            <article class="glass-card insight-card reveal">
+              <span class="card-index">01</span>
+              <h3>功率密度持续上升</h3>
+              <p>芯片、功率器件和服务器从“能工作”走向“高负载长期运行”，单位面积热流成为核心矛盾。</p>
+            </article>
+            <article class="glass-card insight-card reveal">
+              <span class="card-index">02</span>
+              <h3>空间越来越受限</h3>
+              <p>手机、轻薄本、机柜和整车平台都要求更高集成度，散热结构必须更薄、更紧凑、更可制造。</p>
+            </article>
+            <article class="glass-card insight-card reveal">
+              <span class="card-index">03</span>
+              <h3>热阻路径越来越复杂</h3>
+              <p>热量不再只从芯片到空气，界面材料、均热结构、冷板、流道和环境能效共同决定最终表现。</p>
+            </article>
+            <article class="glass-card insight-card reveal">
+              <span class="card-index">04</span>
+              <h3>走向系统级热管理</h3>
+              <p>散热方案从单点器件和材料，扩展到结构、流体、控制、仿真和数据中心能耗的综合设计。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="timeline" class="section timeline-section" aria-labelledby="timeline-title">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Development Timeline</p>
+            <h2 id="timeline-title">从自然散热到浸没式冷却</h2>
+            <p>每一个阶段都不是简单替代，而是被更高热流密度、更小空间和更严苛可靠性共同推向前台。</p>
+          </div>
+
+          <div class="timeline" role="list">
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-marker"><span></span></div>
+              <div class="timeline-content glass-card">
+                <div class="timeline-meta">Early Stage</div>
+                <h3>早期阶段：自然散热与金属散热片</h3>
+                <p class="keywords">自然对流 · 铝挤散热片 · 铜散热片</p>
+                <p>早期设备功耗较低，主要依靠金属导热和空气自然对流散热，结构简单、可靠性高。</p>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-marker"><span></span></div>
+              <div class="timeline-content glass-card">
+                <div class="timeline-meta">Forced Air</div>
+                <h3>风冷时代：风扇与散热片组合</h3>
+                <p class="keywords">风扇 · 鳍片 · 强制对流</p>
+                <p>随着 CPU、GPU、电源模块功耗提升，风冷成为最普遍的主动散热方式，在成本和成熟度上长期占优。</p>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-marker"><span></span></div>
+              <div class="timeline-content glass-card">
+                <div class="timeline-meta">Phase Change</div>
+                <h3>热管时代：高效传热结构出现</h3>
+                <p class="keywords">Heat Pipe · 相变传热 · 毛细结构</p>
+                <p>热管通过工质蒸发与冷凝实现高效传热，广泛进入笔记本电脑、服务器和消费电子产品。</p>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-marker"><span></span></div>
+              <div class="timeline-content glass-card">
+                <div class="timeline-meta">Spreading</div>
+                <h3>均温板时代：薄型化与高热流密度</h3>
+                <p class="keywords">Vapor Chamber · VC · 薄型均温 · 手机散热</p>
+                <p>智能手机、轻薄笔记本和高性能电子设备推动 VC 快速发展，散热从“把热带走”升级为“快速均热”。</p>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-marker"><span></span></div>
+              <div class="timeline-content glass-card">
+                <div class="timeline-meta">Liquid Loop</div>
+                <h3>液冷时代：服务器与高性能计算</h3>
+                <p class="keywords">冷板 · 泵 · 液冷循环 · 数据中心</p>
+                <p>AI 服务器和高性能计算推动液冷方案加速普及，散热系统从器件级进入机柜级和数据中心级。</p>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal" role="listitem">
+              <div class="timeline-marker"><span></span></div>
+              <div class="timeline-content glass-card">
+                <div class="timeline-meta">Immersion Future</div>
+                <h3>浸没式冷却与未来散热</h3>
+                <p class="keywords">Immersion Cooling · 两相冷却 · AI 芯片 · 系统级热管理</p>
+                <p>面对更高算力、更高功耗和更高集成度，散热技术正向液冷、浸没式冷却、先进材料和智能热管理演进。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="compare" class="section compare-section" aria-labelledby="compare-title">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Technology Matrix</p>
+            <h2 id="compare-title">技术路线演进对比</h2>
+            <p>不同散热路线并非只有强弱之分，真正的选择取决于热流密度、产品空间、成本结构和维护能力。</p>
+          </div>
+          <div class="matrix-wrap reveal">
+            <table class="tech-matrix">
+              <thead>
+                <tr>
+                  <th>技术路线</th>
+                  <th>核心原理</th>
+                  <th>典型应用</th>
+                  <th>优点</th>
+                  <th>局限</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>自然散热</th>
+                  <td>金属导热 + 自然对流</td>
+                  <td>低功耗电子设备</td>
+                  <td>简单可靠</td>
+                  <td>散热能力有限</td>
+                </tr>
+                <tr>
+                  <th>风冷</th>
+                  <td>风扇强化空气对流</td>
+                  <td>PC、服务器、电源</td>
+                  <td>成本低、成熟</td>
+                  <td>噪音、体积、效率瓶颈</td>
+                </tr>
+                <tr>
+                  <th>热管</th>
+                  <td>相变传热</td>
+                  <td>笔记本、服务器</td>
+                  <td>传热效率高</td>
+                  <td>形状设计受限</td>
+                </tr>
+                <tr>
+                  <th>VC 均温板</th>
+                  <td>平面相变均热</td>
+                  <td>手机、GPU、TVC</td>
+                  <td>薄型、高均温</td>
+                  <td>制造复杂度高</td>
+                </tr>
+                <tr>
+                  <th>液冷</th>
+                  <td>液体循环带走热量</td>
+                  <td>AI 服务器、数据中心</td>
+                  <td>散热能力强</td>
+                  <td>系统复杂、维护要求高</td>
+                </tr>
+                <tr>
+                  <th>浸没式冷却</th>
+                  <td>设备浸入冷却液</td>
+                  <td>高密度数据中心</td>
+                  <td>高效、低噪音</td>
+                  <td>成本、生态、可靠性挑战</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="drivers" class="section drivers-section" aria-labelledby="drivers-title">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Industry Forces</p>
+            <h2 id="drivers-title">推动散热行业向前的六股力量</h2>
+          </div>
+          <div class="driver-grid">
+            <article class="driver reveal"><span></span><h3>芯片功耗提升</h3><p>单芯片热设计功耗抬升，迫使传热路径更短、更高效。</p></article>
+            <article class="driver reveal"><span></span><h3>AI 算力爆发</h3><p>训练与推理集群需要在性能、温度和能耗之间重新平衡。</p></article>
+            <article class="driver reveal"><span></span><h3>消费电子轻薄化</h3><p>有限机身厚度让均热、界面材料和结构堆叠更关键。</p></article>
+            <article class="driver reveal"><span></span><h3>数据中心能效压力</h3><p>PUE 与运维成本让散热从硬件问题变成能源系统问题。</p></article>
+            <article class="driver reveal"><span></span><h3>新能源汽车与功率电子</h3><p>电池、电驱、快充和功率模块扩大了热管理产业边界。</p></article>
+            <article class="driver reveal"><span></span><h3>材料与制造进步</h3><p>复合材料、微结构、焊接和仿真能力让新方案可量产。</p></article>
+          </div>
+        </section>
+
+        <section id="future" class="section future-section" aria-labelledby="future-title">
+          <div class="future-panel reveal">
+            <div class="section-heading">
+              <p class="eyebrow">Next Thermal Stack</p>
+              <h2 id="future-title">AI 时代，散热从部件走向基础设施</h2>
+              <p>未来的热管理不只是把温度压下来，而是让高功耗系统在可制造、可维护、可扩展的边界内释放性能。</p>
+            </div>
+            <div class="trend-list">
+              <div class="trend"><span>01</span><p>从器件散热到系统热管理</p></div>
+              <div class="trend"><span>02</span><p>从单一材料到复合材料体系</p></div>
+              <div class="trend"><span>03</span><p>从经验设计到仿真 + 数据驱动设计</p></div>
+              <div class="trend"><span>04</span><p>从被动散热到主动智能热控制</p></div>
+              <div class="trend"><span>05</span><p>从单机优化到数据中心级能效优化</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="frontier" class="section frontier-section" aria-labelledby="frontier-title">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Frontier Outlook</p>
+            <h2 id="frontier-title">下一代散热，不只是“更冷”</h2>
+            <p>
+              前沿技术正在同时向两个方向推进：一端是手机、SSD、AI 眼镜里的微型主动散热，另一端是 AI 数据中心里的高温液冷、片上微流道和系统级能效调度。
+            </p>
+          </div>
+
+          <div class="frontier-grid">
+            <article class="frontier-card reveal">
+              <span class="frontier-kicker">01 · Micro Airflow</span>
+              <h3>固态微风扇与风扇芯片</h3>
+              <p>
+                传统风扇很难进入超薄、密封、低噪音设备。Frore AirJet 和 xMEMS µCooling 这类方案用压电 MEMS 振膜制造气流，把主动散热做进毫米级空间，面向 SSD、手机、平板、AI 眼镜和边缘 AI 设备。
+              </p>
+            </article>
+            <article class="frontier-card reveal">
+              <span class="frontier-kicker">02 · Warm Liquid Loop</span>
+              <h3>高温直接液冷</h3>
+              <p>
+                AI 机柜密度提升后，液冷不只是冷板，而是从芯片、冷板、CDU、机柜到室外干冷器的闭环系统。更高温度的冷却液可以减少冷机和冷却塔依赖，把散热效率转化为数据中心级能效。
+              </p>
+            </article>
+            <article class="frontier-card reveal">
+              <span class="frontier-kicker">03 · On-chip Microfluidics</span>
+              <h3>片上微流道与热点定向冷却</h3>
+              <p>
+                当热量被多层封装和 3D 堆叠困在硅片附近，传统冷板会被界面热阻限制。片上微流道尝试把冷却液带到更接近热点的位置，并用 AI 热图优化分支流道形态。
+              </p>
+            </article>
+            <article class="frontier-card reveal">
+              <span class="frontier-kicker">04 · Dielectric Fluids</span>
+              <h3>浸没式冷却与介电流体生态</h3>
+              <p>
+                单相、两相浸没式冷却可以降低风扇和机房空调负担，但真正难点在材料兼容性、维护流程、连接器、流体寿命和供应链标准化。它更像基础设施工程，而不是单一散热器升级。
+              </p>
+            </article>
+            <article class="frontier-card reveal">
+              <span class="frontier-kicker">05 · Generative Thermal Design</span>
+              <h3>仿真、数字孪生与生成式流道</h3>
+              <p>
+                散热设计正从经验选型进入模型驱动阶段。CFD、传感器数据和生成式设计可以根据真实功耗地图分配冷却能力，让冷板、风道、泵速和集群调度一起优化。
+              </p>
+            </article>
+            <article class="frontier-card reveal">
+              <span class="frontier-kicker">06 · Heat Reuse</span>
+              <h3>从排热到热能再利用</h3>
+              <p>
+                当数据中心排出的是稳定、可收集的热流，散热系统就有机会和建筑供暖、工业余热、区域能源系统连接。未来竞争点会从“把热排掉”扩展到“让热有去处”。
+              </p>
+            </article>
+          </div>
+
+          <div class="research-note reveal" aria-label="前沿内容依据">
+            <p>
+              调研依据包括 Frore AirJet、xMEMS µCooling、OCP Cooling Environments，以及 2025-2026 年围绕 AI 数据中心液冷、片上微流道和高温闭环液冷的公开资料。
+            </p>
+          </div>
+        </section>
+
+        <section class="section closing" aria-labelledby="closing-title">
+          <div class="closing-card reveal">
+            <p class="eyebrow">Conclusion</p>
+            <h2 id="closing-title">
+              散热行业的发展史，本质上是功率密度、空间约束与工程创新之间不断博弈的历史。
+            </h2>
+            <p>
+              AI 时代不会降低散热的重要性，反而会让热管理成为决定产品性能、可靠性和能效边界的核心技术。
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
